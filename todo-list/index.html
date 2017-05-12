@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>To Do List</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/2.3.0/mustache.min.js"></script>
+  </head>
+  <body>
+    <div id="items-module">
+        <h1>Your List Of Things To Do</h1>
+        <input id="added-item" type="text"/>
+        <button id="add">Add item</button>
+        <button id="remove">Delete item</button>
+        <ul id="items-to-do">
+        <script id="items-template" type="x-tmpl-mustache">
+          {{#items}}
+              <li>
+                  <span>{{.}}</span>
+              </li>
+          {{/items}}
+        </script>
+        </ul>
+        <button id="move">Completed</button>
+        <p>Done</p>
+        <ul id="items-completed"></ul>
+    </div>
+    <script src="app.js"></script>
+  </body>
+</html>
