@@ -7,7 +7,7 @@ $(function(){
             this.render();
         },
         cacheDom: function() {
-            this.$el = $('#itemsModule');
+            this.$el = $('#items-module');
             this.$input = $('#added-item');
             this.$buttonAdd = $('#add');
             this.$buttonRemove = $('#remove');
@@ -22,29 +22,28 @@ $(function(){
             //this.$buttonMove.on('click', this.moveItem.bind(this));
         },
         render: function() {
-        var data = {
-            items: this.items,
-        };
-        this.$ulToDo.html(Mustache.render(this.template, data));
+            var data = {
+                items: this.items,
+            };
+            this.$ulToDo.html(Mustache.render(this.template, data));
         },
         addItem: function() {
-            this.items.push(this.$input.val());
-            this.render();
-            this.$input.val('');
+            if(this.$input.val() !== "") {
+                this.items.push(this.$input.val());
+                this.render();
+                this.$input.val('');
+            }
         },
         deleteItem: function() {
-            var deleteTarget = this.$input.val();
-            var itemsLength = this.items.length;
-            
-            for (var i = itemsLength - 1; i >= 0; i--) {
-                if (this.items[i] === deleteTarget) {
-                    this.items.splice(i,1);
-                }
-            }
-            
-                this.items.splice(i, 1);
-                this.render();
-                this.$input.val("");
+            var $checkboxes = this.$el.find('input[type="checkbox"]');
+            var $checked = $checkboxes[0].checked;
+
+                if($checked == true) {
+                    var $liItem = $checkboxes.closest('li');
+                    var $position = $('li').index($liItem);
+                    position.splice(i, 1);
+                    this.render();
+            } 
         },
 
     };
