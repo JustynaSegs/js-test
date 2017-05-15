@@ -14,7 +14,6 @@ $(function(){
             this.$buttonMove = $('#move');
             this.$ulToDo = $('#items-to-do');
             this.template = $('#items-template').html();
-            this.$ulCompleted = $('#items-completed');
         },
         bindEvents: function() {
             this.$buttonAdd.on('click', this.addItem.bind(this));
@@ -36,16 +35,18 @@ $(function(){
         },
         deleteItem: function() {
             var $checkboxes = this.$el.find('input[type="checkbox"]');
-            var $checked = $checkboxes[0].checked;
+
+            $checkboxes.each(function(i) {
+              var $checked = $checkboxes[i].checked;
 
                 if($checked == true) {
-                    var $liItem = $checkboxes.closest('li');
-                    var $position = $('li').index($liItem);
-                    position.splice(i, 1);
-                    this.render();
-            } 
+                    var $innerlItem = $checkboxes.closest('span');
+                    var $position = $('span').index($innerlItem);
+                    items.items.splice(i, 1);
+                    items.render();
+                }
+            });
         },
-
     };
 
     items.init();
