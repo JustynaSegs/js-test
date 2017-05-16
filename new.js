@@ -36,7 +36,7 @@ $(function(){
         deleteItem: function() {
             var $checkboxes = this.$el.find('input[type="checkbox"]');
 
-            $checkboxes.each(function(i) {
+            for (var i = $checkboxes.length - 1; i >= 0; i--) {
               var $checked = $checkboxes[i].checked;
 
                 if($checked == true) {
@@ -45,7 +45,7 @@ $(function(){
                     items.items.splice(i, 1);
                     items.render();
                 }
-            });
+            }
         },
     };
 
